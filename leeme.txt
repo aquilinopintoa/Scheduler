@@ -1,0 +1,26 @@
+
+Instrucciones para compilar el proyecto.
+
+a) correr el ejecutable "iniciarRegistroRmi.cmd"  (Solo le das doble click)
+b) correr el ejecutable "compilarCalculadora.cmd"
+
+Con esto ya tienes el proyecto compilado y el registro rmi activo.
+
+Instrucciones para correr el proyecto:
+
+a) Correr el despachador (ejecutable "correrDespachador" que esta en la carpeta Despachador)
+		a.1) El script te pide el nombre que le quieres dar al despchador.
+b) Correr el servidor de calculo (ejecutable "correrServidor" que esta en la carpeta Servidor-Calculo)
+		b.1) El script te pide el IP de la maquina del despachador (No vale localhost, pon el ip de tu maquina.)
+		b.2) El script te pide el nombre del despachador (El mismo nombre que pusiste en a.1.)
+		b.3)  El script te pide el nombre que le quieres dar al servidor de calculo.
+c) Correr el cliente (ejecutable "correrCliente" que esta en la carpeta Cliente)
+		c.1) El script te pide el IP de la maquina del despachador (No vale localhost, pon el ip de tu maquina.)
+		c.2) El script te pide el nombre del despachador (El mismo nombre que pusiste en a.1.)
+		
+Por ahora solo esta la parte de calculo. La parte de almacenamiento que hiciste monica la tengo guardada para integrarla.
+Me gustaria que fueras integrando tu interfaz cliente, solo las llamadas de calculo claro, al proyecto. Lo unico que debes
+hacer es modificar el archivo "ClienteCalculo" que se encuentra en la carpeta "Cliente/client". Basate en ese archivo para integrar
+tu cliente.
+
+Cualquier duda me preguntas, pero por mensaje :).

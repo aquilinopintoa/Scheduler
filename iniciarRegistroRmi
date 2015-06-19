@@ -1,0 +1,4 @@
+#!/bin/bash 
+
+#inicia el registro de servidores rmi.
+rmiregistry

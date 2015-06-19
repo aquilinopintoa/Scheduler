@@ -1,0 +1,9 @@
+#!/bin/bash 
+
+# Script para correr el Servidor de calculo.
+read -p "Introduzca el nombre o direccion IP del despachador: " maquinaDesp
+read -p "Introduzca el puerto del servidor despachador: " portDesp
+read -p "Introduzca el nombre del servidor despachador: " nombreDesp
+read -p "Introduzca el nombre que desea que tenga su servidor de Almacenamiento: " nombreSer
+read -p "Introduzca el puerto del servidor de Almacenamiento: " portServ
+java -cp .:public_objects/classes/rmi.jar servidor.ServidorAlmacenador $maquinaDesp $portDesp $nombreDesp $nombreSer $portServ

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+#Script para correr el Cliente.
+java -cp .:public_objects/classes/rmi.jar client.ClienteCalculo

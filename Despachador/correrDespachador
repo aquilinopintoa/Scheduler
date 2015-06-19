@@ -1,0 +1,24 @@
+#!/bin/bash 
+
+# Script para correr el Despachador.
+ISACTIVE=""
+until [[ $ISACTIVE == "Si" || $ISACTIVE == "No" ]]
+do
+	read -p "Desea que el servidor despachador sea activo (Si/No):  " ISACTIVE
+done
+
+if [[ $ISACTIVE == "Si" ]]
+then
+	read -p "Introduzca el nombre que desea que tenga su servidor despachador:  " NAMEACTIVE
+	read -p "Introduzca el puerto del servidor despachador:  " PORTACTIVE
+	java -cp .:public_objects/classes/rmi.jar despachador.Despachador true $NAMEACTIVE $PORTACTIVE
+else
+	read -p "Introduzca el nombre del servidor despachador activo:  " NAMEACTIVE
+	read -p "Introduzca el nombre o direccion IP del despachador activo:  " IPACTIVE 
+	read -p "Introduzca el puerto del servidor despachador activo:  " PORTACTIVE
+	read -p "Introduzca el nombre que desea que tenga su servidor despachador pasivo:  " NAMEPASSIVE
+	read -p "Introduzca el puerto del servidor despachador pasivo:  " PORTPASSIVE
+	read -p "Introduzca el tiempo de Polling del servidor pasivo (miliseg.):  " POLLINGTIME
+	java -cp .:public_objects/classes/rmi.jar despachador.Despachador false $NAMEACTIVE $PORTACTIVE $IPACTIVE $NAMEPASSIVE $PORTPASSIVE $POLLINGTIME
+fi
+ 

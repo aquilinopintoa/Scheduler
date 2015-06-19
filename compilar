@@ -1,0 +1,63 @@
+#!/bin/bash 
+
+# Se crea la carpeta temporal.
+mkdir temp
+
+
+# Se compilan y empaquetan los Stub del Despachador
+cd Despachador
+javac coordinador/Servidor.java coordinador/TablaArchivos.java coordinador/EstadoDespachador.java coordinador/InterDespachador.java
+jar cvf coordinador.jar coordinador/*.class
+mv coordinador.jar ../temp
+cd ..
+
+
+# Se compilan y empaquetan los Stub del Servidor de calculo.
+cd Servidor-Calculo
+javac calculadora/ExcepcionMatematica.java calculadora/ExcepcionDeFormato.java calculadora/Matriz.java calculadora/InterfaceCalculadora.java
+jar cvf calculadora.jar calculadora/*.class
+mv calculadora.jar ../temp
+cd ..
+
+
+# Se compilan y empaquetan los Stub del Servidor de almacenamiento.
+cd Servidor-Almacenamiento
+javac almacenador/InterAlmacena.java
+jar cvf almacenador.jar almacenador/*.class
+mv almacenador.jar ../temp
+cd ..
+
+
+# Se unifican los Stub en un solo paquete.
+cd temp
+jar -xvf calculadora.jar
+jar -xvf coordinador.jar
+jar -xvf almacenador.jar
+rm calculadora.jar
+rm coordinador.jar
+rm almacenador.jar
+jar -cvf rmi.jar .
+mv rmi.jar ..
+cd ..
+rm -r -f temp
+
+
+# Se envian los Stub a los componentes de software.
+cp rmi.jar ./Servidor-Calculo/public_objects/classes
+cp rmi.jar ./Servidor-Almacenamiento/public_objects/classes
+cp rmi.jar ./Despachador/public_objects/classes
+cp rmi.jar ./Cliente/public_objects/classes
+rm rmi.jar
+
+
+# Se compilan los componentes de software.
+cd Despachador
+javac -cp public_objects/classes/rmi.jar despachador/Despachador.java
+cd ../Servidor-Calculo
+javac -cp public_objects/classes/rmi.jar servidor/ServidorCalculo.java
+cd ../Servidor-Almacenamiento
+javac -cp public_objects/classes/rmi.jar servidor/ServidorAlmacenador.java
+cd ../Cliente
+javac -cp public_objects/classes/rmi.jar client/ClienteCalculo.java
+cd ..
+

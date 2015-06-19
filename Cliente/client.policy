@@ -1,0 +1,3 @@
+grant codeBase "file:/home/mrodriguez/Escritorio/Proy2.2/Cliente/" {
+	permission java.security.AllPermission;
+};

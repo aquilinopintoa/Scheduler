@@ -1,0 +1,3 @@
+grant codeBase "file:/home/johnny/Escritorio/Proy2/Servidor-Almacenamiento/" {
+	permission java.security.AllPermission;
+};
